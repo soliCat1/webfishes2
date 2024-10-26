@@ -1,0 +1,60 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+#top-creative {
+    width: 960px;
+    height: 250px;
+
+    overflow: hidden;
+
+    margin: 0 auto;
+}
+
+#bottom-creative {
+    width: 960px;
+    height: 100px;
+
+    overflow: hidden;
+
+    margin: 0 auto;
+}
+
+#site_main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#left-creative {
+    width: calc((100% - 960px)/2);
+    height: 100vh;
+
+    overflow: hidden;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#right-creative {
+    width: calc((100% - 960px)/2);
+    height: 100vh;
+
+    overflow: hidden;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+}

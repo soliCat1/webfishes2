@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="swiper/swiper-bundle.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="top background">
+        <div class="click background"></div>
+        <div class="close-top close background"></div>
+        <div class="video background">
+            <video muted playsinline preload>
+                <source src="./assets/video.mp4" type="video/mp4">
+            </video>
+            <div class="sound"></div>
+            <div class="mute"></div>
+            <div class="play"></div>
+        </div>
+        <div class="logo2 background"></div>
+        <div class="btn2 background"></div>
+        <div class="logo-text2 background"></div>
+    </div>
+    <div class="left background">
+        <div class="bg-left background"></div>
+        <div class="click background"></div>
+        <div class="close-left close background"></div>
+        <div class="swiper1 mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="text-left1 background"></div>
+                    <div class="image1 image background"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="text-left2 background"></div>
+                    <div class="image2 image background"></div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="block1"></div>
+            <div class="block2"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="logo background"></div>
+        <div class="btn background"></div>
+        <div class="logo-text background"></div>
+    </div>
+    <div class="right background">
+        <div class="bg-right background"></div>
+        <div class="click background"></div>
+        <div class="close-right close background"></div>
+        <div class="swiper2 mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="text-right1 background"></div>
+                    <div class="image-right1 image background"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="text-right2 background"></div>
+                    <div class="image-right2 image background"></div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="block3"></div>
+            <div class="block4"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="info1 background"></div>
+        <div class="logo background"></div>
+        <div class="btn background"></div>
+        <div class="logo-text background"></div>
+    </div>
+</div>
+
+<script>
+  var slider2 = document.querySelector('.swiper2');
+  var x_click = document.querySelectorAll('.swiper-slide')[0];
+  var x_click1 = document.querySelectorAll('.swiper-slide')[1];
+  var x_click4 = document.querySelector('.block1');
+  var x_click5 = document.querySelector('.block2');
+  var x_click6 = document.querySelector('.block3');
+  var x_click7 = document.querySelector('.block4');
+  var x_click8 = slider2.querySelectorAll('.swiper-slide')[0];
+  var x_click9 = slider2.querySelectorAll('.swiper-slide')[1];
+  var x_click13 = document.querySelectorAll('.click')[0];
+  var x_click14 = document.querySelector('video');
+  var x_click15 = document.querySelectorAll('.click')[1];
+  var x_click16 = document.querySelectorAll('.click')[2];
+
+  x_click.addEventListener('click', clickout_1);
+  x_click1.addEventListener('click', clickout_1);
+  x_click4.addEventListener('click', clickout_1);
+  x_click5.addEventListener('click', clickout_1);
+  x_click6.addEventListener('click', clickout_1);
+  x_click7.addEventListener('click', clickout_1);
+  x_click8.addEventListener('click', clickout_1);
+  x_click9.addEventListener('click', clickout_1);
+  x_click13.addEventListener('click', clickout_1);
+  x_click14.addEventListener('click', clickout_1);
+  x_click15.addEventListener('click', clickout_1);
+  x_click16.addEventListener('click', clickout_1);
+
+  var clickTag = readGETParameter('dspx_clicktag_p'),
+    dspx_debug = readGETParameter('dspx_debug'),
+    clickoutLinkRedirect = readGETParameter('dspx_clicktag'),
+    clickoutLink2 = readGETParameter('dspxct'),
+    clickoutEncodeLevel = readGETParameter('dspx_encodelevel');
+
+  function readGETParameter(c) {
+    var n = window.location.search.substring(1),
+      i = n.split('&');
+    for (var e = 0; e < i.length; e++) {
+      var o = i[e].split('=');
+      if (o[0] == c) {
+        return decodeURIComponent(o[1])
+      }
+    }
+    return c == 'dspx_encodelevel' ? 2 : 0
+  }
+
+  function clickout_1() {
+    fireASCClicks();
+    var e = clickTag;
+    if (clickoutLinkRedirect != 0) {
+      e = clickoutLinkRedirect + btoa(e)
+    }
+    if (clickoutLink2 != 0) {
+      e = clickoutLink2 + encodeURIComponent(e)
+    }
+    if (dspx_debug) console.log(e);
+    window.open(e)
+  }
+
+  function fireASCClicks() {
+    var _c = 'dspx_clicktagASC',
+      _nn = 5;
+    var cASC = function (c, nn) {
+      var n = window.location.search.substring(1),
+        i = n.split('&');
+      var aa = [];
+      for (var e = 0; e < i.length; e++) {
+        var o = i[e].split('=');
+        for (var ni = 0; ni < nn; ni++) {
+          if (ni == 0) cc = c;
+          else cc = c + ni;
+          if (o[0] == cc) {
+            aa.push(decodeURIComponent(o[1]))
+          }
+        }
+      }
+      return aa
+    };
+    var ctASC = cASC(_c, _nn);
+    for (i = 0; i < ctASC.length; i++) {
+      if (dspx_debug == 1) console.log('fire Click ASC:' + ctASC[i]);
+      (new Image).src = ctASC[i]
+    }
+  }
+</script>
+<script src="lib/gsap.min.js"></script>
+<script src="swiper/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

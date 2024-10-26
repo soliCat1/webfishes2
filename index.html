@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1600">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title></title>
+    <style type="text/css">
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: block;
+            position: relative;
+            visibility: visible;
+            width: 960px;
+            height: 250px;
+            margin: 0px auto;
+            background-color: red;
+        }
+
+        #content-div {
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            max-width: 1920px;
+            position: relative;
+            background-color: #161528;
+            z-index: -2;
+        }
+
+
+        .line-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: calc(702/1920 * 100%);
+            height: auto;
+            max-width: 702px;
+        }
+
+        .line-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            width: calc(659/1920 * 100%);
+            height: auto;
+            max-width: 659px;
+        }
+
+        .image {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            max-width: 589px;
+            width: calc(589/1920 * 100%);
+            height: auto
+        }
+
+        @media (max-width: 1480px) {
+            .image {
+                width: 20%;
+                transform: translateX(8%);
+            }
+        }
+
+        @media (max-width: 1220px) {
+            .image {
+                width: 15%;
+            }
+        }
+
+
+        @media (min-width: 1920px) {
+            .line-top {
+                left: 50%;
+                transform: translateX(-960px);
+            }
+
+            .line-bottom {
+                left: 50%;
+                transform: translateX(-960px);
+            }
+
+            .image {
+                right: 50%;
+                transform: translateX(960px);
+            }
+
+            .swiper-container {
+                left: 50%;
+                transform: translateX(-960px);
+            }
+        }
+
+        #main-banner {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #left-banner {
+            position: fixed;
+            top: 0;
+            height: 100%;
+            width: calc((100% - 960px) / 2);
+        }
+
+        #right-banner {
+            position: fixed;
+            top: 0;
+            height: 100%;
+            right: 0;
+            width: calc((100% - 960px) / 2);
+            transform: translateX(-1px);
+        }
+
+        #top-banner {
+            margin: 0 auto;
+            width: 960px;
+            height: 250px;
+            transition: height 500ms ease;
+        }
+
+        .expand {
+            z-index: 1000;
+        }
+
+        #bottom-banner {
+            margin: 0 auto;
+            width: 960px;
+            padding: 0;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .infos {
+            top: 265px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 450px;
+            max-width: 850px;
+            left: 50%;
+            transform: translate(-49.8%, 0);
+            position: fixed;
+            flex-direction: column;
+        }
+
+        .size-info {
+            opacity: 0;
+            transition: 0.4s ease;
+            display: inline-block;
+            margin: 10px 30px;
+            padding: 10px 30px;
+            background-color: #ffe185;
+            width: 100%;
+            position: absolute;
+            z-index: 1000;
+            font-family: "Open Sans", Arial, sans-serif;
+            color: #000;
+            font-weight: normal;
+            font-size: 14px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ffbd89;
+        }
+
+        .ie-info {
+            opacity: 0;
+            transition: 0.4s ease;
+            display: inline-block;
+            margin: 10px 30px;
+            padding: 10px 30px;
+            background-color: #ff7586;
+            width: 100%;
+            position: absolute;
+            z-index: 1000;
+            font-family: "Open Sans", Arial, sans-serif;
+            color: #000;
+            font-weight: normal;
+            font-size: 14px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #b45a5a;
+        }
+
+        .size-info.show,
+        .ie-info.show {
+            opacity: 1;
+            position: relative;
+        }
+
+        .test-info {
+            max-width: 500px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #c7c7c7;
+            padding: 10px 20px;
+            background-color: #eeeeee;
+            transform: translate(-49.8%, 0);
+            bottom: 120px;
+            left: 50%;
+            width: 100%;
+            position: fixed;
+            z-index: 1000;
+            font-family: "Open Sans", Arial, sans-serif;
+            color: #9c9c9c;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .test-info .display {
+            font-weight: bold
+        }
+
+        .test-info span {
+            display: block
+        }
+
+        .active {
+            pointer-events: all !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content-div">
+        <img class="line-bottom" src="./assets/svg/line-bottom.svg" alt="Image">
+        <img class="line-top" src="./assets/svg/line-top.svg" alt="Image">
+        <img class="image" alt="Image">
+        <div id="main-banner">
+            <iframe id="main-creative" allowFullscreen="true" frameBorder="0" src="main/index.html"></iframe>
+        </div>
+        <div id="left-banner">
+            <iframe id="left-creative" allowFullscreen="true" frameBorder="0" src="left/index.html"></iframe>
+        </div>
+        <div id="top-banner">
+            <iframe id="top-creative" frameBorder="0" src="top/index.html"></iframe>
+        </div>
+        <div id="right-banner">
+            <iframe id="right-creative" frameBorder="0" src="right/index.html" allow="camera"></iframe>
+        </div>
+        <div id="siteImg" class="content">
+            <div class="infos">
+                <p class="ie-info">
+                    <span>Using <span class="version">Internet Explorer</span> may cause display errors.</span>
+                </p>
+                <p class="size-info">
+                    <span>
+                        Your <b>browser window is too small</b> for the ad to serve correctly.<br>
+                        In a live environment this creative would not be served.
+                    </span>
+                </p>
+            </div>
+            <p class="test-info"><span class="ua"></span><span class="display"></span></p>
+            <img id="siteImgEl" src="./default.jpg">
+        </div>
+        <div id="bottom-banner">
+            <iframe id="bottom-creative" src="bottom/index.html" frameborder="0" scrolling="no"></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        const image = document.querySelector('.image');
+
+        window.addEventListener("message", receiveMessage, false);
+
+        function receiveMessage(event) {
+            if (typeof event.data != undefined) {
+                var parseData = event.data;
+
+                if (typeof parseData !== 'object') {
+                    try {
+                        
+                        parseData = JSON.parse(parseData);
+                        console.log(parseData);
+                        image.setAttribute('src', parseData.src)
+                        if (parseData.blockActive != undefined && parseData.blockActive) {
+                            document.querySelector('#main-banner').classList.add('active');
+                            document.querySelector('.test-info').style.display = 'none';
+                        }
+
+                        if (parseData.close != undefined && parseData.close) {
+                            document.querySelector('#main-banner').classList.remove('active');
+                            document.querySelector('.test-info').style.display = 'block';
+                        }
+                    }
+
+                    catch (e) { }
+                }
+            }
+        }
+
+        function updateTestInfo() {
+            var dpr = (typeof window.devicePixelRatio !== 'undefined') ? window.devicePixelRatio : '1';
+            document.querySelector('.test-info .ua').innerHTML = window.navigator.userAgent;
+            document.querySelector('.test-info .display').innerHTML = 'Screen: ' + window.screen.width + 'x' + window.screen.height + ' - DPR: ' + dpr + ' - Viewport: ' + window.innerWidth + 'x' + window.innerHeight;
+        }
+        function updateMinDisplayWarning() {
+            var minWidth = 960 + 130 + 130;
+            if (window.innerWidth < minWidth || (window.innerWidth / window.innerHeight) > 2.5) {
+                document.querySelector('.size-info').classList.add('show');
+            } else {
+                document.querySelector('.size-info').classList.remove('show');
+            }
+        }
+        function detectEdge() {
+            if (/Edge\/\d./i.test(navigator.userAgent)) {
+                document.querySelector('.ie-info .version').textContent = 'Microsoft Edge';
+                document.querySelector('.ie-info').classList.add('show');
+            } else {
+                detectIE11();
+            }
+        }
+        function detectIE11() {
+            var rV = -1; // Return value assumes failure.
+
+            if (window.navigator.appName === 'Microsoft Internet Explorer' || window.navigator.appName === 'Netscape') {
+                var uA = navigator.userAgent;
+                var rE = new RegExp('MSIE ([0-9]{1,}[.0-9]{0,})');
+
+                if (rE.exec(uA) !== null) {
+                    rV = parseFloat(RegExp.$1);
+                } else if (navigator.userAgent.match(/Trident.*rv:11\./)) {
+                    /* check for IE 11 */
+                    rV = 11;
+                }
+                if (rV >= 0) {
+                    document.querySelector('.ie-info .version').textContent = 'Internet Explorer';
+                    document.querySelector('.ie-info').classList.add('show');
+                }
+            }
+        }
+        updateTestInfo();
+        updateMinDisplayWarning();
+        detectEdge();
+        var iframesWindows = document.querySelectorAll('iframe');
+        var banners = [];
+        var additionalMethods = {
+            addCssClassToTarget: function (target, params) {
+                if (params.className) {
+                    var arr = target.className.split(' ');
+                    if (arr.indexOf(params.className) == -1) {
+                        target.className += ' ' + params.className;
+                    }
+                }
+                if (params.value) {
+                    document.querySelector('.test-info').style.display = 'none';
+                    document.querySelector('.infos').style.display = 'none';
+                    console.info('los', target, params);
+                    target.style.cssText = params.value;
+                }
+            },
+            removeCssClassFromTarget: function (target, params) {
+
+                document.querySelector('.test-info').style.display = 'block';
+                document.querySelector('.infos').style.display = 'block';
+
+                if (params.className) {
+                    target.className = target.className.replace(params.className, '');
+                }
+
+                target.style.cssText = '';
+
+            }
+        };
+        var initTop;
+
+        if (!Object.assign) {
+            Object.defineProperty(Object, 'assign', {
+                enumerable: false,
+                configurable: true,
+                writable: true,
+                value: function (target) {
+                    'use strict';
+                    if (target === undefined || target === null) {
+                        throw new TypeError('Cannot convert first argument to object');
+                    }
+
+                    var to = Object(target);
+                    for (var i = 1; i < arguments.length; i++) {
+                        var nextSource = arguments[i];
+                        if (nextSource === undefined || nextSource === null) {
+                            continue;
+                        }
+                        nextSource = Object(nextSource);
+
+                        var keysArray = Object.keys(Object(nextSource));
+                        for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                            var nextKey = keysArray[nextIndex];
+                            var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                            if (desc !== undefined && desc.enumerable) {
+                                to[nextKey] = nextSource[nextKey];
+                            }
+                        }
+                    }
+                    return to;
+                }
+            });
+        }
+
+        window.onload = function () {
+            if (iframesWindows) {
+                updateTestInfo();
+                updateMinDisplayWarning();
+
+                banners = {
+                    top: document.querySelector('#top-banner'),
+                    left: document.querySelector('#left-banner'),
+                    right: document.querySelector('#right-banner'),
+                    bottom: document.querySelector('#bottom-banner'),
+                };
+                updateIframes();
+                setInterval(function () {
+                    updateIframes();
+
+                    var top = document.querySelector('#top-creative').getBoundingClientRect().top * -1;
+                    updateIframes({ scrollPos: top });
+                }, 500);
+            }
+        };
+        window.onresize = function () {
+            if (iframesWindows) {
+                updateTestInfo();
+                updateMinDisplayWarning();
+                updateIframes();
+            }
+        };
+        window.onscroll = function () {
+            if (iframesWindows) {
+
+                var top = document.querySelector('#top-creative').getBoundingClientRect().top * -1;
+                updateIframes({ scrollPos: top });
+            }
+        };
+
+        if (window.addEventListener) {
+            window.addEventListener('message', processIframeMessage, false);
+        } else {
+            window.attachEvent('onmessage', processIframeMessage);
+        }
+
+        function processIframeMessage(messageObj) {
+            var data = JSON.parse(messageObj.data);
+
+            if (typeof messageObj.data !== 'undefined') {
+                if (data.type == 'skinad') {
+                    this.updateBanner(data);
+                } else {
+                    sendPostMessage(data);
+                }
+            }
+        }
+
+        function updateBanner(data) {
+            var target = banners[data.target];
+            if (!data.info) {
+                return;
+            }
+            var method = additionalMethods[data.info.method];
+            if (target && method) {
+                method(target, data.info.params);
+            }
+        }
+
+        function sendPostMessage(data) {
+            for (var i = 0; i < iframesWindows.length; i++) {
+                iframesWindows[i].contentWindow.postMessage(JSON.stringify(data), '*');
+            }
+        }
+
+        function updateIframes(obj) {
+            if (!obj) {
+                obj = {};
+            }
+
+            for (var i = 0; i < iframesWindows.length; i++) {
+
+                var top = document.querySelector('#top-creative').parentNode.getBoundingClientRect().top;
+
+                if (typeof initTop === 'undefined') {
+                    initTop = top;
+                }
+
+                var newTop = initTop;
+                if (typeof obj.scrollPos !== 'undefined') {
+                    newTop = initTop - obj.scrollPos;
+                }
+
+                if (top < 0) {
+                    top = 0;
+                }
+
+                document.querySelector('#left-creative').parentNode.style.top = top + 'px';
+                document.querySelector('#left-creative').parentNode.style.height = window.innerHeight + 'px';
+                document.querySelector('#right-creative').parentNode.style.height = window.innerHeight + 'px';
+                document.querySelector('#right-creative').parentNode.style.top = top + 'px';
+
+                obj = Object.assign(obj, {
+                    h: window.innerHeight,
+                    w: window.innerWidth,
+                    topOffset: -top,
+                    scrollHeight: window.document.body.clientHeight
+                });
+                iframesWindows[i].contentWindow.postMessage(JSON.stringify(obj), '*');
+            }
+        }
+
+        /* window.postMessage(JSON.stringify({
+            type: 'skinad',
+            target: 'top',
+            info: { method: 'addCssClassToTarget', params: { className: 'expand', value: 'height:450px !important', } }
+        }), '*');
+        */
+
+        /* window.postMessage(JSON.stringify({
+            type: 'skinad',
+            target: 'top',
+            info: { method: 'removeCssClassFromTarget', params: { className: 'expand' } }
+        }), '*');*/
+
+    </script>
+
+</body>
+
+</html>

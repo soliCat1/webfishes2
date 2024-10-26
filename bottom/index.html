@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+  </div>
+  <script>
+    var x_click = document.querySelector('.container');
+    x_click.addEventListener("click", clickout_1);
+
+    var clickTag = readGETParameter("dspx_clicktag_p"),
+      dspx_debug = readGETParameter("dspx_debug"),
+      clickoutLinkRedirect = readGETParameter("dspx_clicktag"),
+      clickoutLink2 = readGETParameter("dspxct"),
+      clickoutEncodeLevel = readGETParameter("dspx_encodelevel");
+
+    function readGETParameter(c) {
+      var n = window.location.search.substring(1),
+        i = n.split("&");
+      for (var e = 0; e < i.length; e++) {
+        var o = i[e].split("=");
+        if (o[0] == c) {
+          return decodeURIComponent(o[1])
+        }
+      }
+      return c == "dspx_encodelevel" ? 2 : 0
+    }
+
+    function clickout_1() {
+      fireASCClicks();
+      var e = clickTag;
+      if (clickoutLinkRedirect != 0) {
+        e = clickoutLinkRedirect + btoa(e)
+      }
+      if (clickoutLink2 != 0) {
+        e = clickoutLink2 + encodeURIComponent(e)
+      }
+      if (dspx_debug) console.log(e);
+      window.open(e)
+    }
+
+    function fireASCClicks() {
+      var _c = "dspx_clicktagASC",
+        _nn = 5;
+      var cASC = function (c, nn) {
+        var n = window.location.search.substring(1),
+          i = n.split("&");
+        var aa = [];
+        for (var e = 0; e < i.length; e++) {
+          var o = i[e].split("=");
+          for (var ni = 0; ni < nn; ni++) {
+            if (ni == 0) cc = c;
+            else cc = c + ni;
+            if (o[0] == cc) {
+              aa.push(decodeURIComponent(o[1]))
+            }
+          }
+        }
+        return aa
+      };
+      var ctASC = cASC(_c, _nn);
+      for (i = 0; i < ctASC.length; i++) {
+        if (dspx_debug == 1) console.log("fire Click ASC:" + ctASC[i]);
+        (new Image).src = ctASC[i]
+      }
+    }
+  </script>
+
+</body>
+
+</html>

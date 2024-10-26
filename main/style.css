@@ -1,0 +1,431 @@
+*{
+	margin: 0;
+	padding: 0;
+    cursor: pointer;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    visibility: hidden;
+}
+
+.background {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+.click{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.close{
+    width: calc((30/1920)*100%);
+    height: calc((30/970)*100%);
+    background-image: url("assets/closeWhite.svg");
+    top: calc((48/970)*100%);
+    right: calc((46/1920)*100%);
+}
+
+.logo{
+    width: calc((88/1920)*100%);
+    height: calc((56/970)*100%);
+    background-image: url("assets/logo.svg");
+    background-position: left;
+    bottom: calc((50/970)*100%);
+    left: calc((80/1920)*100%);
+    pointer-events: none;
+}
+
+.logo2{
+    width: calc((88/1920)*100%);
+    height: calc((56/970)*100%);
+    background-image: url("assets/logo2.svg");
+    background-position: left;
+    bottom: calc((50/970)*100%);
+    left: calc((78/1920)*100%);
+    pointer-events: none;
+}
+
+.logo-text{
+    width: calc((477/1920)*100%);
+    height: calc((88/970)*100%);
+    background-image: url("assets/logoText.svg");
+    background-position: left;
+    top: calc((98/970)*100%);
+    left: calc((89/1920)*100%);
+    pointer-events: none;
+}
+
+.logo-text2{
+    width: calc((477/1920)*100%);
+    height: calc((88/970)*100%);
+    background-image: url("assets/logoText.svg");
+    background-position: left;
+    top: calc((98/970)*100%);
+    left: calc((89/1920)*100%);
+    pointer-events: none;
+}
+
+.block1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.block1.in {
+    opacity: 1;
+    pointer-events: visible;
+}
+
+.block2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.block2.in {
+    opacity: 1;
+    pointer-events: visible;
+}
+
+.block3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.block3.in {
+    opacity: 1;
+    pointer-events: visible;
+}
+
+.block4 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.block4.in {
+    opacity: 1;
+    pointer-events: visible;
+}
+
+.left{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    top: 0;
+    left: 0;
+}
+
+.bg-left{
+    width: 50%;
+    height: 100%;
+    background-image: url("assets/leftBg.jpg");
+    background-size: cover;
+    top: 0;
+    right: 0;
+}
+
+.bg-right{
+    width: 50%;
+    height: 100%;
+    background-image: url("assets/rightBg.jpg");
+    background-size: cover;
+    top: 0;
+    right: 0;
+}
+
+:root {
+    --swiper-theme-color: #ffffff !important;
+    --swiper-navigation-size: 50px !important;
+}
+
+.swiper-button-prev{
+    top: 63% !important;
+}
+
+.swiper-button-next{
+    top: 63% !important;
+}
+
+.swiper-pagination{
+    position: absolute;
+    bottom: 2% !important;
+    pointer-events: none;
+}
+
+.swiper-pagination-bullet {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+    color:#ff0022 !important;
+    background-color: #ff0022 !important;
+}
+
+.mySwiper {
+    width: calc((787/1920)*100%);
+    height: calc((585/970)*100%);
+    position: absolute;
+    top: calc((214/970)*100%);
+    left: calc((88/1920)*100%);
+    overflow: hidden;
+}
+
+.swiper-slide{
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.image{
+    width: calc((787/787)*100%);
+    height: calc((445/585)*100%);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.image1{
+    background-image: url("assets/imgLeft1.jpg");
+}
+
+.image2{
+    background-image: url("assets/imgLeft2.jpg");
+}
+
+.image-right1{
+    background-image: url("assets/imgRight1.jpg");
+}
+
+.image-right2{
+    background-image: url("assets/imgRight2.jpg");
+}
+
+.info1{
+    width: calc((782/1920)*100%);
+    height: calc((15/970)*100%);
+    background-image: url("assets/info1.svg");
+    background-position: left;
+    bottom: calc((143/970)*100%);
+    left: calc((88/1920)*100%);
+}
+
+.text-left1{
+    width: calc((786/787)*100%);
+    height: calc((96/585)*100%);
+    background-image: url("assets/textLeft.svg");
+    background-position: top left;
+    top: calc((0/970)*100%);
+    left: 0%;
+    pointer-events: none;
+}
+
+.text-left2{
+    width: calc((773/787)*100%);
+    height: calc((94/585)*100%);
+    background-image: url("assets/textLeft2.svg");
+    background-position: top left;
+    top: calc((0/970)*100%);
+    left: 0%;
+    pointer-events: none;
+}
+
+.text-right1{
+    width: calc((757/787)*100%);
+    height: calc((96/585)*100%);
+    background-image: url("assets/textRight.svg");
+    background-position: top left;
+    top: calc((0/970)*100%);
+    left: 0%;
+    pointer-events: none;
+}
+
+.text-right2{
+    width: calc((750/787)*100%);
+    height: calc((96/585)*100%);
+    background-image: url("assets/textRight2.svg");
+    background-position: top left;
+    top: calc((0/970)*100%);
+    left: 0%;
+    pointer-events: none;
+}
+
+.text-top{
+    width: calc((532/1920)*100%);
+    height: calc((81/970)*100%);
+    background-image: url("assets/textTop.svg");
+    background-position: bottom left;
+    margin-bottom: 19%;
+    bottom: calc((183/970)*100%);
+    left: calc((1021/1920)*100%);
+    pointer-events: none;
+}
+
+.btn{
+    width: calc((240/1920)*100%);
+    height: calc((50/970)*100%);
+    background-image: url("assets/btn.svg");
+    background-position: bottom left;
+    bottom: calc((50/970)*100%);
+    left: calc((634/1920)*100%);
+    animation-name: btn;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    pointer-events: none;
+}
+
+.btn2{
+    width: calc((240/1920)*100%);
+    height: calc((50/970)*100%);
+    background-image: url("assets/btn.svg");
+    background-position: bottom left;
+    bottom: calc((185/970)*100%);
+    left: calc((80/1920)*100%);
+    animation-name: btn;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    pointer-events: none;
+}
+
+@keyframes btn {
+    0%{
+        transform: scale(1);
+    }
+
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+
+.right{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    top: 0;
+    left: 0;
+}
+
+.top{
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/topBg.jpg");
+    background-size: cover;
+    background-position: right;
+    top: 0;
+    left: 0;
+}
+
+.video {
+    width: calc((1068 / 1920) * 100%);
+    height: calc((602 / 970) * 100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    object-position: bottom;
+    object-fit: cover;
+    pointer-events: visible;
+}
+
+.sound {
+    width: 30px;
+    height: 30px;
+    background-image: url("./assets/sound.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    opacity: 0.4;
+    z-index: 100;
+    pointer-events: visible;
+}
+
+.mute {
+    width: 30px;
+    height: 30px;
+    background-image: url("./assets/mute.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    opacity: 0.4;
+    z-index: 100;
+    pointer-events: visible;
+}
+
+.play {
+    width: 30px;
+    height: 30px;
+    background-image: url("./assets/play.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    opacity: 0.4;
+    z-index: 100;
+    pointer-events: visible;
+}
+
