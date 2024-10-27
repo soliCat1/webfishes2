@@ -20,7 +20,7 @@ body {
     position: relative;
     overflow: hidden;
     visibility: hidden;
-    background: url("/top/assets/top-side.svg") center no-repeat;
+    background: url("./assets/top-side.svg") center no-repeat;
 }
 
 /*Preload*/
