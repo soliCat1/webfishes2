@@ -286,6 +286,7 @@
     </div>
 
     <script>
+        
         const image = document.querySelector('.image');
 
         window.addEventListener("message", receiveMessage, false);
@@ -296,10 +297,11 @@
 
                 if (typeof parseData !== 'object') {
                     try {
-                        
+                    
                         parseData = JSON.parse(parseData);
-                        console.log(parseData);
-                        image.setAttribute('src', parseData.src)
+                        const newSrc = parseData.src.split('');
+                        newSrc.splice(0, 1);
+                        image.setAttribute('src', newSrc.join(''))
                         if (parseData.blockActive != undefined && parseData.blockActive) {
                             document.querySelector('#main-banner').classList.add('active');
                             document.querySelector('.test-info').style.display = 'none';

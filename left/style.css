@@ -50,7 +50,7 @@ body {
   top: 98%;
   width: 24px;
   height: 24px;
-  background: url("/left/assets/slider-arrow.svg") center no-repeat;
+  background: url("./assets/slider-arrow.svg") center no-repeat;
 }
 
 .swiper-button-prev.swiper__button--prev {
