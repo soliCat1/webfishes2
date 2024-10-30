@@ -16,15 +16,15 @@
     </div>
   </div>
   <div class="container">
+    <div class="bg background"></div>
+    <img class="text" src="./assets/text.svg" alt="Image">
   </div>
   <script>
     var x_click = document.querySelector('.preloader');
-    var x_click1 = document.querySelector('.bg');
     var x_click2 = document.querySelector('.container');
 
 
     x_click.addEventListener('click', clickout_1);
-    x_click1.addEventListener('click', clickout_1);
     x_click2.addEventListener('click', clickout_1);
 
 
@@ -56,7 +56,8 @@
         e = clickoutLink2 + encodeURIComponent(e)
       }
       if (dspx_debug) console.log(e);
-      window.open(e)
+      console.log(1)
+      window.open("/empty-page/index.html")
     }
 
     function fireASCClicks() {

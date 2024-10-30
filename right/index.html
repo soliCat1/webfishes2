@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="fonts/stylesheet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,19 +16,21 @@
     </div>
   </div>
   <div class="container">
-    <picture>
-      <source media="(max-width: 250px)" srcset="./assets/content-s.svg">
-      <img class="content" src="./assets/content.svg" alt="Image">
-  </picture>
+    <div class="bg background"></div>
+    <div class="content">
+      <picture>
+        <source media="(max-width: 250px)" srcset="./assets/text-s.svg">
+        <img class="text" src="./assets/text.svg" alt="Image">
+      </picture>
+      <img class="button" src="./assets/button.svg" alt="Image">
+    </div>
   </div>
   <script>
     var x_click = document.querySelector('.preloader');
-    var x_click1 = document.querySelector('.all');
-    var x_click2 = document.querySelector('.bg');
+    var x_click1 = document.querySelector('.container');
 
     x_click.addEventListener('click', clickout_1);
     x_click1.addEventListener('click', clickout_1);
-    x_click2.addEventListener('click', clickout_1);
 
 
     var clickTag = readGETParameter('dspx_clicktag_p'),
@@ -60,7 +61,7 @@
         e = clickoutLink2 + encodeURIComponent(e)
       }
       if (dspx_debug) console.log(e);
-      window.open(e)
+      window.open("/empty-page/index.html")
     }
 
     function fireASCClicks() {

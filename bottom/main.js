@@ -28,35 +28,12 @@ function scrollWidth() {
 var w_left;
 var w_right;
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-var setNewBackground = (src) => {
-  let newStyle;
-  if (src.includes("Meria")) {
-    newStyle = 'url("./assets/bg-Meria.jpg") top 0 left 0 / cover repeat';
-  } else if (src.includes("Stefan")) {
-    newStyle = 'url("./assets/bg-Stefan.jpg") top 0 left 0 / cover repeat';
-  } else if (src.includes("Stina")) {
-    newStyle = 'url("./assets/bg-Stina.jpg") top 0 left 0 / cover repeat';
-  } else if (src.includes("Hiba")) {
-    newStyle = 'url("./assets/bg-Hiba.jpg") top 0 left 0 / cover repeat';
-  } else if (src.includes("Felix")) {
-    newStyle = 'url("./assets/bg-Felix.jpg") top 0 left 0 / cover repeat';
-  }
-  bg.style.background = newStyle;
-};
-
 window.addEventListener("load", () => {
   loader();
   window.addEventListener("message", function (event) {
     if (typeof event.data !== undefined) {
       var parseData = event.data;
-      var objectData = JSON.parse(parseData);
-      if (objectData.hasOwnProperty("src")) {
-        setNewBackground(objectData.src);
-      }
+
       if (typeof parseData !== "object") {
         try {
           parseData = JSON.parse(parseData);

@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <div class="all"></div>
     <div class="preloader">
         <div class="preloader__row">
             <div class="preloader__item"></div>
@@ -18,48 +17,50 @@
         </div>
     </div>
     <div class="container">
+        <div class="bg background"></div>
         <img class="logo" src="./assets/logo.svg" alt="Image">
         <div class="swiper swiper--custom-mod">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img class="swiper__image" src="../assets/Maria.png" alt="Image">
+                    <img class="swiper__image" src="./assets/slider-images/Meria.png" alt="Image">
                 </div>
                 <div class="swiper-slide">
-                    <img class="swiper__image" src="../assets/Hector.png" alt="Image">
+                    <img class="swiper__image" src="./assets/slider-images/Stefan.png" alt="Image">
                 </div>
                 <div class="swiper-slide">
-                    <img class="swiper__image" src="../assets/Stina.png" alt="Image">
+                    <img class="swiper__image" src="./assets/slider-images/Stina.png" alt="Image">
                 </div>
                 <div class="swiper-slide">
-                    <img class="swiper__image" src="../assets/Hiba.png" alt="Image">
+                    <img class="swiper__image" src="./assets/slider-images/Hiba.png" alt="Image">
                 </div>
                 <div class="swiper-slide">
-                    <img class="swiper__image" src="../assets/Felix.png" alt="Image">
+                    <img class="swiper__image" src="./assets/slider-images/Felix.png" alt="Image">
                 </div>
             </div>
             <div class="swiper__container">
                 <div class="swiper-button-prev swiper__button--prev">
+                    <img class="swiper__arrow" src="./assets/slider-arrow.svg" alt="Image">
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next swiper__button--next">
+                    <img class="swiper__arrow" src="./assets/slider-arrow.svg" alt="Image">
                 </div>
             </div>
         </div>
-        <picture>
-            <source media="(max-width: 250px)" srcset="./assets/content-s.svg">
-            <img class="content" src="./assets/content.svg" alt="Image">
-        </picture>
+        <div class="content">
+            <picture>
+                <source media="(max-width: 250px)" srcset="./assets/text-s.svg">
+                <img class="title" src="./assets/text.svg" alt="Image">
+            </picture>
+            <img class="button" src="./assets/button.svg" alt="Image">
+        </div>
     </div>
     <script>
         var x_click = document.querySelector('.preloader');
-        var x_click1 = document.querySelector('.all');
-        var x_click2 = document.querySelector('.container');
+        var x_click1 = document.querySelector('.container');
 
         x_click.addEventListener("click", clickout_1);
         x_click1.addEventListener("click", clickout_1);
-        x_click2.addEventListener("click", clickout_1);
-
-
 
         var clickTag = readGETParameter("dspx_clicktag_p"),
             dspx_debug = readGETParameter("dspx_debug"),
@@ -79,7 +80,7 @@
             return c == "dspx_encodelevel" ? 2 : 0
         }
 
-        function clickout_1() {
+        function clickout_1({ target }) {
             fireASCClicks();
             var e = clickTag;
             if (clickoutLinkRedirect != 0) {
@@ -89,7 +90,10 @@
                 e = clickoutLink2 + encodeURIComponent(e)
             }
             if (dspx_debug) console.log(e);
-            window.open(e)
+            if (target.closest(".swiper")) {
+                return
+            }
+            window.open("/empty-page/index.html")
         }
 
         function fireASCClicks() {
@@ -118,10 +122,9 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="lib/gsap.min.js"></script>
     <script src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script defer src="./initSwiper.js"></script>
 </body>
 
 </html>

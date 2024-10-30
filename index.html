@@ -40,76 +40,6 @@
             text-align: center;
             width: 100%;
             max-width: 1920px;
-            position: relative;
-            background-color: #161528;
-            z-index: -2;
-        }
-
-
-        .line-top {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            width: calc(702/1920 * 100%);
-            height: auto;
-            max-width: 702px;
-        }
-
-        .line-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            width: calc(659/1920 * 100%);
-            height: auto;
-            max-width: 659px;
-        }
-
-        .image {
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: -1;
-            max-width: 589px;
-            width: calc(589/1920 * 100%);
-            height: auto
-        }
-
-        @media (max-width: 1480px) {
-            .image {
-                width: 20%;
-                transform: translateX(8%);
-            }
-        }
-
-        @media (max-width: 1220px) {
-            .image {
-                width: 15%;
-            }
-        }
-
-
-        @media (min-width: 1920px) {
-            .line-top {
-                left: 50%;
-                transform: translateX(-960px);
-            }
-
-            .line-bottom {
-                left: 50%;
-                transform: translateX(-960px);
-            }
-
-            .image {
-                right: 50%;
-                transform: translateX(960px);
-            }
-
-            .swiper-container {
-                left: 50%;
-                transform: translateX(-960px);
-            }
         }
 
         #main-banner {
@@ -249,9 +179,6 @@
 
 <body>
     <div id="content-div">
-        <img class="line-bottom" src="./assets/svg/line-bottom.svg" alt="Image">
-        <img class="line-top" src="./assets/svg/line-top.svg" alt="Image">
-        <img class="image" alt="Image">
         <div id="main-banner">
             <iframe id="main-creative" allowFullscreen="true" frameBorder="0" src="main/index.html"></iframe>
         </div>
@@ -286,9 +213,6 @@
     </div>
 
     <script>
-        
-        const image = document.querySelector('.image');
-
         window.addEventListener("message", receiveMessage, false);
 
         function receiveMessage(event) {
@@ -299,9 +223,6 @@
                     try {
                     
                         parseData = JSON.parse(parseData);
-                        const newSrc = parseData.src.split('');
-                        newSrc.splice(0, 1);
-                        image.setAttribute('src', newSrc.join(''))
                         if (parseData.blockActive != undefined && parseData.blockActive) {
                             document.querySelector('#main-banner').classList.add('active');
                             document.querySelector('.test-info').style.display = 'none';

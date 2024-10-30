@@ -1,14 +1,9 @@
-html {
-  font-size: 62.5%;
-}
-
 body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   overflow: hidden;
   cursor: pointer;
-  min-width: 120px;
 }
 
 .container {
@@ -20,6 +15,18 @@ body {
   max-height: 970px;
   overflow: hidden;
   position: relative;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  max-height: 970px;
+  background: url("./assets/bg-Stina.jpg") top 0 left 0 / cover no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .logo {
@@ -36,6 +43,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: calc(372 / 480 * 100%);
+  height: calc(372 / 970 * 100%);
   max-width: 372px;
 }
 
@@ -44,24 +52,32 @@ body {
   height: auto;
 }
 
+.swiper__container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 100;
+}
+
 .swiper-button-next.swiper__button--next,
 .swiper-button-prev.swiper__button--prev {
-  position: absolute;
-  top: 98%;
+  position: static;
+  margin: 0;
+}
+
+.swiper-button-next.swiper__button--next img,
+.swiper-button-prev.swiper__button--prev img {
   width: 24px;
   height: 24px;
-  background: url("./assets/slider-arrow.svg") center no-repeat;
-  background-size: contain;
 }
 
 .swiper-button-prev.swiper__button--prev {
-  left: 50%;
-  transform: translateX(-80px) rotateY(180deg);
-}
-
-.swiper-button-next.swiper__button--next {
-  right: 50%;
-  transform: translateX(80px);
+  transform: rotateY(180deg);
 }
 
 .swiper-button-prev::after,
@@ -70,23 +86,51 @@ body {
 }
 
 .swiper.swiper--custom-mod .swiper-pagination {
-  bottom: 5px;
+  position: static;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
 }
 
 .swiper.swiper--custom-mod .swiper-pagination-bullet {
   width: 11px;
   height: 11px;
   background-color: #d9d9d9;
-  margin: 0 3px;
+  margin: 0 !important;
 }
 
 .content {
+  width: 100%;
+  position: absolute;
+  top: calc(601 / 970 * 100%);
+  left: 0;
+}
+
+.title {
+  width: calc(268 / 480 * 100%);
+  height: auto;
+  margin: 0 auto 24px auto;
+  display: block;
+}
+
+.button {
   width: calc(285 / 480 * 100%);
   height: auto;
-  position: absolute;
-  bottom: calc(246 / 970 * 100%);
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  display: block;
+  animation: pulse 1.5s 3s ease infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 250px) {
@@ -95,59 +139,57 @@ body {
   }
 
   .content {
+    top: calc(421 / 900 * 100%);
+  }
+
+  .title {
     width: calc(202 / 250 * 100%);
-    bottom: calc(317 / 900 * 100%);
+  }
+
+  .button {
+    width: calc(202 / 250 * 100%);
+  }
+
+  .swiper.swiper--custom-mod {
+    height: calc(238 / 900 * 100%);
+  }
+
+  .swiper__container {
+    gap: 10px;
   }
 
   .swiper.swiper--custom-mod .swiper-pagination-bullet {
     width: 5px;
     height: 5px;
-    margin: 0 2px !important;
   }
 
-  .swiper-button-next.swiper__button--next,
-  .swiper-button-prev.swiper__button--prev {
+  .swiper-button-next.swiper__button--next img,
+  .swiper-button-prev.swiper__button--prev img {
     width: 20px;
     height: 20px;
-    top: 102%;
-  }
-
-  .swiper-button-prev.swiper__button--prev {
-    transform: translateX(-50px) rotateY(180deg);
-  }
-
-  .swiper-button-next.swiper__button--next {
-    transform: translateX(50px);
   }
 }
 
-@media (max-width: 170px) {
+@media (max-width: 200px) {
+  .swiper.swiper--custom-mod {
+    height: calc(170 / 730 * 100%);
+  }
+
+  .swiper__container {
+    gap: 7px;
+  }
+
   .logo {
     width: calc(112 / 170 * 100%);
     height: calc(40 / 900 * 100%);
-  }
-
-  .content {
-    width: calc(138 / 170 * 100%);
-    bottom: calc(272 / 730 * 100%);
   }
 
   .swiper-button-next.swiper__button--next,
   .swiper-button-prev.swiper__button--prev {
     width: 16px;
     height: 16px;
-    top: 104%;
   }
 }
-
-.all {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 /*Preload*/
 
 .preloader {
