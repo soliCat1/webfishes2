@@ -151,7 +151,7 @@ body {
   }
 
   .swiper.swiper--custom-mod {
-    height: calc(238 / 900 * 100%);
+    height: calc(258 / 900 * 100%);
   }
 
   .swiper__container {
